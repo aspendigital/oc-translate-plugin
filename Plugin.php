@@ -46,7 +46,7 @@ class Plugin extends \System\Classes\PluginBase
 
         // Add "master" locale switcher to static page forms
         Event::listen('backend.form.extendFields', function($widget) {
-            if (!$widget->model instanceof \RainLab\Pages\Classes\Page) {
+            if (!$widget->model instanceof \RainLab\Pages\Classes\Page || $widget->isNested) {
                 return;
             }
 
