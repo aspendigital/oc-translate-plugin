@@ -24,7 +24,7 @@ class Plugin extends \System\Classes\PluginBase
     {
         // RainLab.Translate operates on the assumption that all content has a translation in every
         // locale, and if not, showing the default locale's content is acceptable. This overrides that
-        // behavior for static pages so if the page doesn't have a URL assigned for the current
+        // behavior for static pages so if the page doesn't have a URL or markup assigned for the current
         // locale, it's a 404.
         Event::listen('cms.page.beforeDisplay', function($controller, $url, $page) {
             if (!$page || $url === '/') {
@@ -34,7 +34,7 @@ class Plugin extends \System\Classes\PluginBase
             $staticPage = array_get($page->apiBag, 'staticPage');
             $locale = Translator::instance()->getLocale();
 
-            if ($staticPage && !$staticPage->hasTranslatablePageUrl($locale)) {
+            if ($staticPage && !$staticPage->hasTranslatablePageUrl($locale) && !$staticPage->hasTranslation('markup', $locale)) {
                 $page404 = $controller->getRouter()->findByUrl('/404');
                 return $page404 ?: Response::make(View::make('cms::404'), 404);
             }
