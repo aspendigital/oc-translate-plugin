@@ -1,0 +1,9 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    static_page_locale_routing:
+        label: Static Page Locale Routing
+        type: switch
+        comment: RainLab.Translate falls back to the default locale URL if unassigned in the active locale. This plugin overrides that behavior to return a 404 if a static page does not have a locale URL defined.

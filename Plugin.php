@@ -5,6 +5,7 @@ use Event;
 use RainLab\Translate\Classes\Translator;
 use Response;
 use View;
+use AspenDigital\Translate\Models\Settings as Settings;
 
 class Plugin extends \System\Classes\PluginBase
 {
@@ -27,7 +28,9 @@ class Plugin extends \System\Classes\PluginBase
         // behavior for static pages so if the page doesn't have a URL or markup assigned for the current
         // locale, it's a 404.
         Event::listen('cms.page.beforeDisplay', function($controller, $url, $page) {
-            if (!$page || $url === '/') {
+            $static_page_locale_routing = Settings::get('static_page_locale_routing');
+
+            if (!$static_page_locale_routing || !$page || $url === '/') {
                 return;
             }
 
@@ -58,10 +61,40 @@ class Plugin extends \System\Classes\PluginBase
         });
     }
 
-	public function registerComponents()
-	{
-	    return [
+    public function registerComponents()
+    {
+        return [
             Components\HomeLocalePicker::class => 'homeLocalePicker'
-	    ];
-	}
+        ];
+    }
+
+    public function registerSettings()
+    {
+        return [
+            'settings' => [
+                'label'       => 'Translate',
+                'description' => 'Manage translation options.',
+                'icon'        => 'icon-language',
+                'class'       => 'AspenDigital\Translate\Models\Settings',
+                'order'       => 100,
+                'keywords'    => '',
+                'permissions' => ['aspendigital.translate.manage_translate_options']
+            ]
+        ];
+    }
+
+    /**
+     * Registers any back-end permissions used by this plugin.
+     *
+     * @return array
+     */
+    public function registerPermissions()
+    {
+        return [
+            'aspendigital.translate.manage_translate_options' => [
+                'tab' => 'Translate',
+                'label' => 'Manage translation options.'
+            ]
+        ];
+    }
 }
