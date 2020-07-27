@@ -1,6 +1,8 @@
 <div data-control="master-locale-switcher" style="float: right; display: none">
     <div class="dropdown">
-        <button type="button" data-toggle="dropdown" class="btn button oc-icon-globe">Change Locale</button>
+        <button type="button" data-toggle="dropdown" class="btn button oc-icon-globe">
+          <?= Lang::get('aspendigital.translate::lang.translate.change_locale') ?>
+        </button>
         <ul class="dropdown-menu" role="menu" data-dropdown-title="Locale">
         <?php foreach ($locales as $code => $name): ?>
             <li role="presentation"><a role="menuitem" data-master-locale-switch="<?=$code?>"><?= e($name) ?></a></li>

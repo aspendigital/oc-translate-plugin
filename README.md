@@ -8,4 +8,4 @@ This plugin registers a component named `homeLocalePicker` that can be used in p
 When editing static pages, you will see a `Change Locale` button in the form toolbar. This can be used to change the locale of all translatable fields in the page form.
 
 ## Static Page Locale Routing
-RainLab.Translate falls back to the default locale URL if unassigned in the active locale. This plugin overrides that behavior to return a 404 if a static page does not have a locale URL defined.
+RainLab.Translate falls back to the default locale URL if unassigned in the active locale. This plugin provides an option to override that behavior and return a 404 if a static page does not have a locale URL defined.
