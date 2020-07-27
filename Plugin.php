@@ -28,9 +28,9 @@ class Plugin extends \System\Classes\PluginBase
         // behavior for static pages so if the page doesn't have a URL or markup assigned for the current
         // locale, it's a 404.
         Event::listen('cms.page.beforeDisplay', function($controller, $url, $page) {
-            $static_page_locale_routing = Settings::get('static_page_locale_routing');
+            $staticPageLocaleRouting = Settings::get('static_page_locale_routing');
 
-            if (!$static_page_locale_routing || !$page || $url === '/') {
+            if (!$staticPageLocaleRouting || !$page || $url === '/') {
                 return;
             }
 
