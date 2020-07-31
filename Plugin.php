@@ -74,11 +74,12 @@ class Plugin extends \System\Classes\PluginBase
             'settings' => [
                 'label'       => 'aspendigital.translate::lang.settings.label',
                 'description' => 'aspendigital.translate::lang.settings.description',
-                'icon'        => 'icon-language',
+                'icon'        => 'icon-cog',
                 'class'       => 'AspenDigital\Translate\Models\Settings',
-                'order'       => 100,
+                'order'       => 600,
                 'keywords'    => '',
-                'permissions' => ['aspendigital.translate.manage_translate_options']
+                'category'    => 'rainlab.translate::lang.plugin.name',
+                'permissions' => ['aspendigital.translate.manage_settings']
             ]
         ];
     }
@@ -91,9 +92,9 @@ class Plugin extends \System\Classes\PluginBase
     public function registerPermissions()
     {
         return [
-            'aspendigital.translate.manage_translate_options' => [
-                'tab'   => 'aspendigital.translate::lang.permission.manage_translate_options.tab',
-                'label' => 'aspendigital.translate::lang.permission.manage_translate_options.label'
+            'aspendigital.translate.manage_settings' => [
+                'tab'   => 'rainlab.translate::lang.plugin.tab',
+                'label' => 'aspendigital.translate::lang.permission.manage_settings.label'
             ]
         ];
     }
