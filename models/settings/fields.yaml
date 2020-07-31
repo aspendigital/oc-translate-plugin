@@ -1,0 +1,9 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    static_page_locale_routing:
+        label: aspendigital.translate::lang.settings.static_page_locale_routing.label
+        type: switch
+        comment: aspendigital.translate::lang.settings.static_page_locale_routing.comment
